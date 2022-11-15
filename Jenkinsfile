@@ -1,10 +1,8 @@
-pipeline {
-    agent { docker { image 'maven:3.8.6-openjdk-11-slim' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'pwd'
-            }
+node {
+    /* Requires the Docker Pipeline plugin to be installed */
+    docker.image('node:16.13.1-alpine').inside {
+        stage('Test') {
+            sh 'node --version'
         }
     }
 }
